@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="side_bar">
+        <img src="icons/profile_pic/profile.jpg" alt="" class="profile">
+        <h1 class="user_name">Programmer</h1>
+        <div class="one" onclick="toggle_func('dashboard')">
+            <img src="icons/btn_icons/btn_1.png" alt="">
+            <p class="btn_1">Dashboard</p>
+        </div>
+        <div class="two" onclick="toggle_func('transaction')">
+            <img src="icons/btn_icons/btn_2.png" alt="">
+            <p class="btn_2">Transaction</p>
+        </div>
+        <div class="three" onclick="toggle_func('income')">
+            <img src="icons/btn_icons/btn_3.png" alt="">
+            <p class="btn_3">Incomes</p>
+        </div>
+        <div class="four" onclick="toggle_func('expense')">
+            <img src="icons/btn_icons/btn_4.png" alt="">
+            <p class="btn_4">Expenses</p>
+        </div>
+    </div>
+    <div class="main_bar">
+
+        <!-- 
+        
+            Dashboard view
+        
+        -->
+
+        <div class="dashboard_view">
+            <h2>All Transaction</h2>
+            <canvas class="graph"></canvas>
+            <div class="history">
+                <h2>Recent History</h2>
+                <div class="first_history">
+                    <p>Dentist Appointment</p>
+                    <p>-₹120</p>
+                </div>
+                <div class="second_history">
+                    <p>travelling</p>
+                    <p>-₹80</p>
+                </div>
+                <div class="third_history">
+                    <p>Freelancing</p>
+                    <p>₹400</p>
+                </div>
+                <div class="income_text">
+                    <p>Min</p>
+                    <h3>Income</h3>
+                    <p>Max</p>
+                </div>
+                <div class="income_details">
+                    <h3 class="min_income">₹1200</h3>
+                    <h3 class="max_income">₹8000</h3>
+                </div>
+                <div class="expense_text">
+                    <p>Min</p>
+                    <h3>Expense</h3>
+                    <p>Max</p>
+                </div>
+                <div class="expense_details">
+                    <h3 class="min_expense">₹120</h3>
+                    <h3 class="max_expense">₹3000</h3>
+                </div>
+            </div>
+            <div class="result">
+                <div class="temporary_div">
+                    <div class="total_income">
+                        <h3>Total Income</h3>
+                        <h1>₹16500</h1>
+                    </div>
+                    <div class="total_expense">
+                        <h3>Total Expense</h3>
+                        <h1>₹3920</h1>
+                    </div>
+                </div>
+                <div class="total_balance">
+                    <h3>Total Balance</h3>
+                    <h1>₹12580</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+        
+            transaction view
+        
+        -->
+
+        <div class="transaction_view">
+            <h1>Transaction</h1>
+            <table>
+                <tr>
+                    <td>Sno</td>
+                    <td>Title</td>
+                    <td>Type</td>
+                    <td>amount</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 
+        
+            income view
+
+        -->
+
+        <div class="income_view">
+            <h1>Incomes</h1>
+            <div class="show_income">
+                <h2>Total Income : ₹15200</h2>
+            </div>
+            <div class="income_content">
+                <div class="income_form">
+                    <form action="">
+                        <input type="text" name="" id="" placeholder="Income title" class="a"><br>
+                        <input type="number" name="" id="" placeholder="Income amount" class="b"><br>
+                        <select name="" id="income_option">
+                            <option value="Salary">Salary</option>
+                            <option value="Freelancing">Freelancing</option>
+                            <option value="Investments">Investments</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                            <option value="YouTube">YouTube</option>
+                            <option value="others">others</option>
+                        </select><br>
+                        <input type="text" name="" id="" placeholder="Reference" class="c"><br>
+                        <button type="button" onclick="setIncome_func()">Add Income</button>
+                    </form>
+                </div>
+                <div class="income_list">
+                    <!-- <div class="income_list_data">
+                        <img src="icons/income_icons/salary.png" alt="">
+                        <div class="income_list_data_para">
+                            <h3 class="income_list_data_title">First month Salary</h3>
+                            <div class="center_part">
+                                <p>₹5500</p>
+                                <img src="icons/para_icons/type.png" alt="">
+                                <p>salary</p>
+                                <img src="icons/para_icons/message.png" alt="">
+                                <p>first month salary of zoho</p>
+                            </div>
+                        </div>
+                        <p class="income_delete_btn" onclick="removeData_func(event,'income')"><img src="icons/para_icons/delete.png" alt=""></p>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+        
+            expense view
+
+        -->
+
+        <div class="expense_view">
+            <h1>Expense</h1>
+            <div class="show_expense">
+                <h2>Total Expense : -₹15200</h2>
+            </div>
+            <div class="expense_content">
+                <div class="expense_form">
+                    <form action="">
+                        <input type="text" name="" id="" placeholder="Expense title" class="a"><br>
+                        <input type="number" name="" id="" placeholder="Expense amount" class="b"><br>
+                        <select name="" id="expense_option">
+                            <option value="Travel">Travel</option>
+                            <option value="Food">Food</option>
+                            <option value="Education">Education</option>
+                            <option value="Medical">Medical</option>
+                            <option value="Rent">Rent</option>
+                            <option value="others">others</option>
+                        </select><br>
+                        <input type="text" name="" id="" placeholder="Reference" class="c"><br>
+                        <button type="button" onclick="setExpense_func()">Add Expense</button>
+                    </form>
+                </div>
+                <div class="expense_list">
+                    <!-- <div class="expense_list_data">
+                        <img src="icons/expense_icons/travel.png" alt="">
+                        <div class="expense_list_data_para">
+                            <h3 class="expense_list_data_title">Travel charges</h3>
+                            <div class="center_part">
+                                <p>₹5500</p>
+                                <img src="icons/para_icons/type.png" alt="">
+                                <p>Travel</p>
+                                <img src="icons/para_icons/message.png" alt="">
+                                <p>flight ticket and other charges</p>
+                            </div>
+                        </div>
+                        <p class="expense_delete_btn"><img src="icons/para_icons/delete.png" alt=""></p>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="script/script.js"></script>
+</body>
+</html>
+
+<!--
+ <a href="https://www.flaticon.com/free-icons/summary" title="summary icons">Summary icons created by smashingstocks - Flaticon</a> 
+ <a href="https://www.flaticon.com/free-icons/transaction" title="transaction icons">Transaction icons created by surang - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/transaction-history" title="transaction history icons">Transaction history icons created by Uniconlabs - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/spending" title="spending icons">Spending icons created by Sukma Aditia - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/payment" title="payment icons">Payment icons created by srip - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/freelancer" title="freelancer icons">Freelancer icons created by ultimatearm - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/investment" title="investment icons">Investment icons created by Kiranshastry - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/money-transfer" title="money transfer icons">Money transfer icons created by catkuro - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/youtube" title="youtube icons">Youtube icons created by Freepik - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/income" title="income icons">Income icons created by nawicon - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/types" title="types icons">Types icons created by LAFS - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/message" title="message icons">Message icons created by Freepik - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by feen - Flaticon</a>
+ <a href="https://www.flaticon.com/free-icons/travel" title="travel icons">Travel icons created by GOWI - Flaticon</a>
+ -->
